@@ -1,0 +1,15 @@
+{
+  "name": "TaskManagerLite",
+  "keywords": "task manager",
+  "description": "A library for a light task manager",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/ninjachris81/TaskManagerLite.git"
+  },
+  "frameworks": "arduino",
+  "platforms":
+  [
+    "atmelavr"
+  ]
+}
