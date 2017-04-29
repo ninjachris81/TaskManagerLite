@@ -9,6 +9,7 @@
 TaskManager	KEYWORD1
 AbstractTask	KEYWORD1
 AbstractIntervalTask	KEYWORD1
+doUpdate	KEYWORD1
 
 ###########################################
 # Methods and Functions (KEYWORD2)

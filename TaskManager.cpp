@@ -1,4 +1,6 @@
 #include "TaskManager.h"
+#include "AbstractIntervalTask.h"
+#include "AbstractTriggerTask.h"
 #include <avr/wdt.h>
 
 TaskManager::TaskManager() {
@@ -24,7 +26,7 @@ void TaskManager::update() {
   wdt_enable(TASK_UPDATE_WDTO);
 
   for (uint8_t i=0; i<taskCount; i++) {
-    tasks[i]->update();
+	if (tasks[i]->doUpdate()) tasks[i]->update();
     wdt_reset();
   }
   

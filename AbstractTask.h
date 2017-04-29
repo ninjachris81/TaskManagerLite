@@ -7,10 +7,10 @@ public:
 
   virtual void update() = 0;
   
-  bool doUpdate() {
+  virtual bool doUpdate() {
 	  return true;
   }
-    
+  
 };
 
 #endif /* ABSTRACTTASK_H */
