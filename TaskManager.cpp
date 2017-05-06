@@ -1,6 +1,4 @@
 #include "TaskManager.h"
-#include "AbstractIntervalTask.h"
-#include "AbstractTriggerTask.h"
 #include <avr/wdt.h>
 
 TaskManager::TaskManager() {
@@ -10,6 +8,7 @@ bool TaskManager::registerTask(AbstractTask *task) {
   if (taskCount>=MAX_TASK_COUNT) return false;    // max tasks reached
   tasks[taskCount] = task;
   taskCount++;
+  task->setTaskManager(this);
   return true;
 }
 
@@ -32,4 +31,3 @@ void TaskManager::update() {
   
   wdt_disable();
 }
-

@@ -14,6 +14,8 @@
 #define TASK_INIT_WDTO WDTO_2S
 #define TASK_UPDATE_WDTO WDTO_4S
 
+class AbstractTask;
+
 class TaskManager {
 public:
   TaskManager();
@@ -23,6 +25,11 @@ public:
   void init();
 
   void update();
+  
+  template<class T>
+  T getTask(uint8_t index) {
+	return (T)tasks[index];
+  }
 
 private:
   AbstractTask* tasks[MAX_TASK_COUNT];
