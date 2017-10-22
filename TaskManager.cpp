@@ -1,5 +1,9 @@
 #include "TaskManager.h"
-#include <avr/wdt.h>
+#ifdef ESP8266
+	// WDT defined in ESP.h
+#else
+	#include <avr/wdt.h>
+#endif
 
 TaskManager::TaskManager() {
 }

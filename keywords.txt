@@ -9,14 +9,17 @@
 TaskManager	KEYWORD1
 AbstractTask	KEYWORD1
 AbstractIntervalTask	KEYWORD1
-doUpdate	KEYWORD1
+AbstractTriggerTask 	KEYWORD1
 
 ###########################################
 # Methods and Functions (KEYWORD2)
 ###########################################
+
 init	KEYWORD2
 update	KEYWORD2
 registerTask	KEYWORD2
+doUpdate	KEYWORD2
+
 ###########################################
 # Constants (LITERAL1)
 ###########################################
