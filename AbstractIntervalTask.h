@@ -5,8 +5,9 @@
 
 class AbstractIntervalTask : public AbstractTask {
 public:
-  AbstractIntervalTask(unsigned long intervalMs) {
+  AbstractIntervalTask(unsigned long intervalMs, bool firstUpdateImmediately = false) {
     this->intervalMs = intervalMs;
+	this->lastUpdate = firstUpdateImmediately ? millis() + intervalMs : millis();
   }
 
   bool doUpdate() {
