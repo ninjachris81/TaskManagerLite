@@ -11,13 +11,16 @@ public:
   }
 
   bool doUpdate() {
-    unsigned long currentMillis = millis();
-    if (currentMillis - lastUpdate >= intervalMs) {      
-      lastUpdate = currentMillis;
+    if (millis() - lastUpdate >= intervalMs) {      
+      lastUpdate = millis();
 	  return true;
     }
 	return false;
   };
+  
+  void updateNow() {
+	this->lastUpdate = millis() + intervalMs;
+  }
 
 protected:
   void setInterval(unsigned long intervalMs) {
