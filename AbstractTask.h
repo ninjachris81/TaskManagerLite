@@ -19,6 +19,9 @@ public:
 	  this->taskManager = taskManager;
   }
   
+  TaskManager* getTaskManager() {
+	  return this->taskManager;
+  }  
   
 protected:
   TaskManager* taskManager;
