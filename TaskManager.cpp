@@ -17,11 +17,15 @@ bool TaskManager::registerTask(AbstractTask *task) {
 }
 
 void TaskManager::init() {
-  wdt_enable(TASK_INIT_WDTO);
   
   for (uint8_t i=0; i<taskCount; i++) {
-    tasks[i]->init();
-    wdt_reset();
+	if (tasks[i]->useInitWDT()) {
+		wdt_enable(TASK_INIT_WDTO);
+		tasks[i]->init();
+	} else {
+		wdt_disable();
+		tasks[i]->init();
+	}
   }
 }
 
