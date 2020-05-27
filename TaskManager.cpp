@@ -1,5 +1,6 @@
 #include "TaskManager.h"
-#ifdef ESP8266
+
+#if defined(ESP8266) || defined(ESP31B) || defined(ESP32)
 	// WDT defined in ESP.h
 #else
 	#include <avr/wdt.h>
@@ -17,21 +18,31 @@ bool TaskManager::registerTask(AbstractTask *task) {
 }
 
 void TaskManager::init() {
+#ifndef	ESP32
   wdt_enable(TASK_INIT_WDTO);
+#endif
   
   for (uint8_t i=0; i<taskCount; i++) {
     tasks[i]->init();
+#ifndef	ESP32
     wdt_reset();
+#endif
   }
 }
 
 void TaskManager::update() {
+#ifndef	ESP32
   wdt_enable(TASK_UPDATE_WDTO);
-
+#endif
+  
   for (uint8_t i=0; i<taskCount; i++) {
 	if (tasks[i]->doUpdate()) tasks[i]->update();
+#ifndef	ESP32
     wdt_reset();
-  }
+#endif
+	}
   
+#ifndef	ESP32
   wdt_disable();
+#endif
 }

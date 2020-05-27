@@ -21,6 +21,8 @@ update	KEYWORD2
 registerTask	KEYWORD2
 doUpdate	KEYWORD2
 updateNow	KEYWORD2
+triggerUpdate KEYWORD2
+triggerUpdateDelay KEYWORD2
 
 ###########################################
 # Constants (LITERAL1)
