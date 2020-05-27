@@ -15,13 +15,17 @@ public:
 	  return true;
   }
   
+  virtual bool useInitWDT() {
+	  return true;
+  }
+  
   void setTaskManager(TaskManager* taskManager) {
 	  this->taskManager = taskManager;
   }
   
   TaskManager* getTaskManager() {
 	  return this->taskManager;
-  }  
+  }
   
 protected:
   TaskManager* taskManager;
