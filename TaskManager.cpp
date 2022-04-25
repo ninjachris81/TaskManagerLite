@@ -7,6 +7,9 @@
 #endif
 
 TaskManager::TaskManager() {
+  for (uint8_t i=0; i<taskCount; i++) {
+	  tasks[i] = NULL;
+  }
 }
 
 bool TaskManager::registerTask(AbstractTask *task) {
@@ -31,7 +34,7 @@ void TaskManager::init() {
 #endif
   
   for (uint8_t i=0; i<taskCount; i++) {
-    tasks[i]->init();
+    if (tasks[i] != NULL) tasks[i]->init();
 #ifndef	ESP32
     wdt_reset();
 #endif
@@ -44,11 +47,13 @@ void TaskManager::update() {
 #endif
   
   for (uint8_t i=0; i<taskCount; i++) {
-	if (tasks[i]->doUpdate()) tasks[i]->update();
-#ifndef	ESP32
-    wdt_reset();
-#endif
-	}
+	  if (tasks[i] != NULL) {
+		if (tasks[i]->doUpdate()) tasks[i]->update();
+		#ifndef	ESP32
+		wdt_reset();
+		#endif
+		}
+	  }
   
 #ifndef	ESP32
   wdt_disable();
