@@ -21,6 +21,7 @@ public:
   TaskManager();
 
   bool registerTask(AbstractTask *task);
+  bool registerTask(AbstractTask *task, uint8_t index);
 
   void init();
 

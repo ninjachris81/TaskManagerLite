@@ -17,6 +17,14 @@ bool TaskManager::registerTask(AbstractTask *task) {
   return true;
 }
 
+bool TaskManager::registerTask(AbstractTask *task, uint8_t index) {
+  if (index>=MAX_TASK_COUNT) return false;    // max tasks reached
+  tasks[index] = task;
+  taskCount = max(index, taskCount) + 1;
+  task->setTaskManager(this);
+  return true;
+}
+
 void TaskManager::init() {
 #ifndef	ESP32
   wdt_enable(TASK_INIT_WDTO);
